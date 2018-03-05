@@ -115,7 +115,7 @@ R4_circuit =  ;
 R5_circuit =  ;
 
 options  = odeset('mass', ? , 'RelTol', 0.1e-9);
-[t2, x2] = ode23t( ? , ? , ? , ? );
+[t2, x2] = ode23t(@transient2, [0 5], ?, options);
 
 % Capture peak overshoot and undershoot voltages with indexes.
 [v5_pk_overshoot_ideal_2 , ...
