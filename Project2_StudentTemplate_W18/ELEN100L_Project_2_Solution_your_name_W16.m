@@ -33,24 +33,24 @@ Vdd_pos  =  15     ;            % Positive power supply voltage
 Vdd_neg  = -15     ;            % Negative power supply voltage
 
 R1_ideal_2 = 5000      ;     % Ohms
-R2_ideal_2 = ?          ;     % Ohms
+R2_ideal_2 = 5000          ;     % Ohms
 R3_ideal_2 = ?          ;     % Ohms
-R4_ideal_2 = ?          ;     % Ohms
-R5_ideal_2 = ?          ;     % Ohms
+R4_ideal_2 = 1000          ;     % Ohms
+R5_ideal_2 = 1000          ;     % Ohms
 C1_ideal_2 = ?           ;    % Farads
 C2_ideal_2 = ?           ;    % Farads
 
 R1_ideal_6 = ?          ;     % Ohms
 R2_ideal_6 = ?          ;     % Ohms
-R3_ideal_6 = ?          ;     % Ohms
-R4_ideal_6 = ?          ;     % Ohms
-R5_ideal_6 = ?          ;     % Ohms
+R3_ideal_6 = 960          ;     % Ohms
+R4_ideal_6 = 1000          ;     % Ohms
+R5_ideal_6 = 1000          ;     % Ohms
 C1_ideal_6 = ?           ;    % Farads
 C2_ideal_6 = ?           ;    % Farads
 
 % Build an array for the R elements.
 R_ideal_2 = [R1_ideal_2, R2_ideal_2, R3_ideal_2, R4_ideal_2, R5_ideal_2];
-R_ideal_6 = [ ?? ];
+R_ideal_6 = [R1_ideal_6, R2_ideal_6, R3_ideal_6, R4_ideal_6, R5_ideal_6];
 
 % Build an array for the C elements.
 C_ideal_2 = [ (0),           (0),           (0), (0), (0)         ; ...
@@ -94,13 +94,13 @@ fignum = fignum+1;
 
 display(' ');
 display('The Ideal Design component values are:');
-fprintf('    R1 = %+11.4f Ohms.\n', R1_ideal_2   );
-fprintf('    R2 = %+11.4f Ohms.\n', ?  );
-fprintf('    R3 = %+11.4f Ohms.\n', ?  );
-fprintf('    R4 = %+11.4f Ohms.\n', ?  );
-fprintf('    R5 = %+11.4f Ohms.\n', ?  );
-fprintf('    C1 = %+11.4e Farads.\n', ? );
-fprintf('    C2 = %+11.4e Farads.\n', ? );
+fprintf('    R1 = %+11.4f Ohms.\n', R1_ideal_2);
+fprintf('    R2 = %+11.4f Ohms.\n', R2_ideal_2);
+fprintf('    R3 = %+11.4f Ohms.\n', R3_ideal_2);
+fprintf('    R4 = %+11.4f Ohms.\n', R4_ideal_2);
+fprintf('    R5 = %+11.4f Ohms.\n', R5_ideal_2);
+fprintf('    C1 = %+11.4e Farads.\n', C1_ideal_2);
+fprintf('    C2 = %+11.4e Farads.\n', C2_ideal_2);
 
 %%
 % Calculate the MATLAB transient response for the Ideal design.
@@ -109,10 +109,10 @@ fprintf('    C2 = %+11.4e Farads.\n', ? );
 % Update the resistor variables used in the proj2E100_transient function
 % before calling the ode23t solver.
 R1_circuit =  R1_ideal_2;
-R2_circuit =  ? ;
-R3_circuit =  ? ;
-R4_circuit =  ? ;
-R5_circuit =  ? ;
+R2_circuit =  R2_ideal_2;
+R3_circuit =  ;
+R4_circuit =  ;
+R5_circuit =  ;
 
 options  = odeset('mass', ? , 'RelTol', 0.1e-9);
 [t2, x2] = ode23t( ? , ? , ? , ? );
@@ -168,10 +168,10 @@ text(t2_pk_undershoot_ideal_2, ...
 
 display(' ');
 display('The MATLAB peak overshoot and undershoot values are:');
-fprintf('    V5 p.o. = %+11.4f Volts.\n',   v5_pk_overshoot_ideal_2);
-fprintf('    V5 p.u. = %+11.4f Volts.\n',   ? );
-fprintf('     t p.o. = %+11.4e seconds.\n', ? );
-fprintf('     t p.u. = %+11.4e seconds.\n', ? );
+fprintf('    V5 p.o. = %+11.4f Volts.\n', v5_pk_overshoot_ideal_2);
+fprintf('    V5 p.u. = %+11.4f Volts.\n', v5_pk_undershoot_ideal_2);
+fprintf('     t p.o. = %+11.4e seconds.\n', t2_pk_overshoot_ideal_2);
+fprintf('     t p.u. = %+11.4e seconds.\n', t2_pk_undershoot_ideal_2);
 
 %% Problem 3
 %
@@ -244,10 +244,16 @@ fprintf('     t p.u. = %+11.4e seconds.\n', ...
 diff_ideal_v5_pk_overshoot_2  = ...
     (ltspice_v5_pk_overshoot_ideal_2 - v5_pk_overshoot_ideal_2) ...
     /abs(v5_pk_overshoot_ideal_2)*100;
-diff_ideal_v5_pk_undershoot_2 = ? ;
+diff_ideal_v5_pk_undershoot_2 = ...
+    (ltspice_v5_pk_undershoot_ideal_2 - v5_pk_undershoot_ideal_2) ...
+    /abs(v5_pk_undershoot_ideal_2)*100;
 
-diff_ideal_t2_pk_overshoot_2  = ? ;
-diff_ideal_t2_pk_undershoot_2 = ? ;
+diff_ideal_t2_pk_overshoot_2  = ...
+    (ltspice_t2_pk_overshoot_ideal_2 - t2_pk_overshoot_ideal_2) ...
+    /abs(t2_pk_overshoot_ideal_2)*100;
+diff_ideal_t2_pk_undershoot_2 = ...
+    (ltspice_t2_pk_undershoot_ideal_2 - t2_pk_undershoot_ideal_2) ...
+    /abs(t2_pk_undershoot_ideal_2)*100;
 
 display(' ');
 display('The % difference between MATLAB and LTSpice at the peaks:');
@@ -256,18 +262,27 @@ fprintf('    MATLAB  V5 p.o. = %+11.4f Volts.\n', ...
 fprintf('    LTSpice V5 p.o. = %+11.4f Volts.\n', ...
          ltspice_v5_pk_overshoot_ideal_2);
 fprintf('        %% diff = %+8.4f (%%).\n', ...
-    diff_ideal_v5_pk_overshoot_2);
+         diff_ideal_v5_pk_overshoot_2);
 
-fprintf('    MATLAB  V5 p.u. = %+11.4f Volts.\n', ? );
-fprintf('    LTSpice V5 p.u. = %+11.4f Volts.\n', ? );
-fprintf('        %% diff = %+8.4f (%%).\n', ? );
+fprintf('    MATLAB  V5 p.u. = %+11.4f Volts.\n', ...
+            v5_pk_undershoot_ideal_2);
+fprintf('    LTSpice V5 p.u. = %+11.4f Volts.\n', ...
+            ltspice_v5_undershoot_ideal_2);
+fprintf('        %% diff = %+8.4f (%%).\n', ...
+            diff_ideal_v5_pk_undershoot_ideal_2);
 
-fprintf('    MATLAB   t p.o. = %+11.4e seconds.\n', ? );
-fprintf('    LTSpice  t p.o. = %+11.4e seconds.\n', ? );
-fprintf('        %% diff = %+8.4f (%%).\n', ? );
-fprintf('    MATLAB   t p.u. = %+11.4e seconds.\n', ? );
-fprintf('    LTSpice  t p.u. = %+11.4e seconds.\n', ? );
-fprintf('        %% diff = %+8.4f (%%).\n', ? );
+fprintf('    MATLAB   t p.o. = %+11.4e seconds.\n', ...
+            t2_pk_overshoot_ideal_2);
+fprintf('    LTSpice  t p.o. = %+11.4e seconds.\n', ...
+            ltspice_t2_pk_overshoot_ideal_2);
+fprintf('        %% diff = %+8.4f (%%).\n', ...
+            diff_ideal_t2_pk_overshoot_ideal_2);
+fprintf('    MATLAB   t p.u. = %+11.4e seconds.\n', ...
+            t2_pk_undershoot_ideal_2);
+fprintf('    LTSpice  t p.u. = %+11.4e seconds.\n', ...
+            ltspice_t2_pk_undershoot_ideal_2);
+fprintf('        %% diff = %+8.4f (%%).\n', ...
+            diff_ideal_t2_pk_undershoot_ideal_2);
      
 %% Problem 6
 %
@@ -283,12 +298,12 @@ fignum = fignum+1;
 display(' ');
 display('The Ideal Design component values are:');
 fprintf('    R1 = %+11.4f Ohms.\n',  R1_ideal_6 );
-fprintf('    R2 = %+11.4f Ohms.\n',  ? );
-fprintf('    R3 = %+11.4f Ohms.\n',  ? );
-fprintf('    R4 = %+11.4f Ohms.\n',  ? );
-fprintf('    R5 = %+11.4f Ohms.\n',  ? );
-fprintf('    C1 = %+11.4e Farads.\n', ? );
-fprintf('    C2 = %+11.4e Farads.\n', ? );
+fprintf('    R2 = %+11.4f Ohms.\n',  R2_ideal_6);
+fprintf('    R3 = %+11.4f Ohms.\n',  R3_ideal_6);
+fprintf('    R4 = %+11.4f Ohms.\n',  R4_ideal_6);
+fprintf('    R5 = %+11.4f Ohms.\n',  R5_ideal_6);
+fprintf('    C1 = %+11.4e Farads.\n', C1_ideal_6);
+fprintf('    C2 = %+11.4e Farads.\n', C2_ideal_6);
 
 %%
 % Calculate the MATLAB transient response for the Ideal design.
@@ -297,10 +312,10 @@ fprintf('    C2 = %+11.4e Farads.\n', ? );
 % Update the resistor variables used in the proj2E100_transient function
 % before calling the ode23t solver.
 R1_circuit =  R1_ideal_6;
-R2_circuit =  ? ;
-R3_circuit =  ? ;
-R4_circuit =  ? ;
-R5_circuit =  ? ;
+R2_circuit =  R2_ideal_6 ;
+R3_circuit =  R3_ideal_6;
+R4_circuit =  R4_ideal_6;
+R5_circuit =  R5_ideal_6;
 
 %ODE solution, refer to the example in Problem 2
 options  = odeset('mass', ?  , 'RelTol', 0.1e-9);  
@@ -316,7 +331,7 @@ v5_pk_undershoot_ideal_index_6 = ...
     v5_pk_undershoot_ideal_index_6 + v5_pk_overshoot_ideal_index_6;
 
 % Capture peak overshoot and undershoot time stamps at peak indexes.
-t6_pk_overshoot_ideal_6  = t6( v5_pk_overshoot_ideal_index_6);
+t6_pk_overshoot_ideal_6  = t6(v5_pk_overshoot_ideal_index_6);
 t6_pk_undershoot_ideal_6 = t6(v5_pk_undershoot_ideal_index_6);
 
 %%
@@ -409,10 +424,10 @@ ltspice_t6_pk_undershoot_ideal_6 = ? ;
 
 display(' ');
 display('The LTSpice peak overshoot and undershoot values are:');
-fprintf('    V5 p.o. = %+11.4f Volts.\n',  );
-fprintf('    V5 p.u. = %+11.4f Volts.\n',  );
-fprintf('     t p.o. = %+11.4e seconds.\n',  );
-fprintf('     t p.u. = %+11.4e seconds.\n',  );
+fprintf('    V5 p.o. = %+11.4f Volts.\n', ltspice_v5_pk_overshoot_ideal_6);
+fprintf('    V5 p.u. = %+11.4f Volts.\n', ltpsice_v5_pk_undershoot_ideal_6);
+fprintf('     t p.o. = %+11.4e seconds.\n', ltspice_t2_pk_overshoot_ideal_6);
+fprintf('     t p.u. = %+11.4e seconds.\n', ltspice_t2_pk_undershoot_ideal_6);
 
 
 %%
