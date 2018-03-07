@@ -477,7 +477,7 @@ fprintf('    LTSpice  t p.u. = %+11.4e seconds.\n', ...
 fprintf('        %% diff = %+8.4f (%%).\n', ...
          diff_ideal_t6_pk_undershoot_6);
 
-
+%{
 %% Problem 7  Template
 %
 % <<ELEN100L_Project_2_figure_14_ldorr_winter2015.png>>
@@ -1031,3 +1031,4 @@ disp('Program execution complete....');
 
 %% MATLAB code listing
 %
+%}
