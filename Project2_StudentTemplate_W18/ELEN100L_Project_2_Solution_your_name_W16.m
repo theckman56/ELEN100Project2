@@ -34,19 +34,19 @@ Vdd_neg  = -15     ;            % Negative power supply voltage
 
 R1_ideal_2 = 5000      ;     % Ohms
 R2_ideal_2 = 5000          ;     % Ohms
-R3_ideal_2 = ?          ;     % Ohms
+R3_ideal_2 = 400          ;     % Ohms
 R4_ideal_2 = 1000          ;     % Ohms
 R5_ideal_2 = 1000          ;     % Ohms
-C1_ideal_2 = ?           ;    % Farads
-C2_ideal_2 = ?           ;    % Farads
+C1_ideal_2 = 0.1*10^-6           ;    % Farads
+C2_ideal_2 = 0.1*10^-6           ;    % Farads
 
 R1_ideal_6 = ?          ;     % Ohms
 R2_ideal_6 = ?          ;     % Ohms
 R3_ideal_6 = 960          ;     % Ohms
 R4_ideal_6 = 1000          ;     % Ohms
 R5_ideal_6 = 1000          ;     % Ohms
-C1_ideal_6 = ?           ;    % Farads
-C2_ideal_6 = ?           ;    % Farads
+C1_ideal_6 = 0.1*10^-6           ;    % Farads
+C2_ideal_6 = 0.1*10^-6           ;    % Farads
 
 % Build an array for the R elements.
 R_ideal_2 = [R1_ideal_2, R2_ideal_2, R3_ideal_2, R4_ideal_2, R5_ideal_2];
@@ -59,11 +59,15 @@ C_ideal_2 = [ (0),           (0),           (0), (0), (0)         ; ...
               (0),           (0),           (0), (0), (0)         ; ...
               (0),           (0),           (0), (0), (0)         ];
 
-C_ideal_6 = [ ?? ];
+C_ideal_6 = [ (0),           (0),           (0), (0), (0)         ; ...
+              (0), -(C1_ideal_6),           (0), (0), (C1_ideal_6); ...
+              (0),           (0), -(C2_ideal_6), (0), (0)         ; ...
+              (0),           (0),           (0), (0), (0)         ; ...
+              (0),           (0),           (0), (0), (0)         ];
 
 
 % Build an array for the source elements.
-B = [ ?? ];
+B = [VG;0;0;0;0];
 
 % Build an array for the the time vector.
 time2 = [0, 3*10^(-3)];
@@ -110,12 +114,12 @@ fprintf('    C2 = %+11.4e Farads.\n', C2_ideal_2);
 % before calling the ode23t solver.
 R1_circuit =  R1_ideal_2;
 R2_circuit =  R2_ideal_2;
-R3_circuit =  ;
-R4_circuit =  ;
-R5_circuit =  ;
+R3_circuit =  R3_ideal_2;
+R4_circuit =  R4_ideal_2;
+R5_circuit =  R5_ideal_2;
 
-options  = odeset('mass', ? , 'RelTol', 0.1e-9);
-[t2, x2] = ode23t(@transient2, [0 5], ?, options);
+options  = odeset('mass', C_ideal_2 , 'RelTol', 0.1e-9);
+[t2, x2] = ode23t(@proj2E100_transient, time2, x0, options);
 
 % Capture peak overshoot and undershoot voltages with indexes.
 [v5_pk_overshoot_ideal_2 , ...
@@ -137,7 +141,7 @@ fignum = fignum+1; figObj = figure(fignum);  % Establish a figure number
 set(fignum, 'Name', ...
     ['Prob 2: Transient Response Ideal Design']); % Name the figure
 
-Tr_ideal_2_Plot = plot(?, ?);                  % Generate plot
+Tr_ideal_2_Plot = plot(t2,x2);                  % Generate plot
 grid on;                                     % Turn grid on
 xlabel('Time (seconds)');                    % Label the x-axis
 ylabel('Amplitude (volts)');                 % Label the y-axis
@@ -318,8 +322,8 @@ R4_circuit =  R4_ideal_6;
 R5_circuit =  R5_ideal_6;
 
 %ODE solution, refer to the example in Problem 2
-options  = odeset('mass', ?  , 'RelTol', 0.1e-9);  
-[t6, x6] = ode23t( @?, ? , ? , ? );
+options  = odeset('mass',C_ideal_6, 'RelTol', 0.1e-9);  
+[t6, x6] = ode23t(@proj2E100_transient, time6, x0, options);
 
 % Capture peak overshoot and undershoot voltages with indexes.
 [v5_pk_overshoot_ideal_6 , ...
@@ -341,7 +345,7 @@ fignum = fignum+1; figObj = figure(fignum);  % Establish a figure number
 set(fignum, 'Name', ...
     ['Prob 6: Transient Response Ideal Design']); % Name the figure
 
-Tr_ideal_6_Plot = plot( ? , ? );                % Generate plot
+Tr_ideal_6_Plot = plot(t6,x6);                % Generate plot
 grid on;                                     % Turn grid on
 xlabel('Time (seconds)');                    % Label the x-axis
 ylabel('Amplitude (volts)');                 % Label the y-axis
@@ -1031,4 +1035,4 @@ disp('Program execution complete....');
 
 %% MATLAB code listing
 %
-%}
+         %}
