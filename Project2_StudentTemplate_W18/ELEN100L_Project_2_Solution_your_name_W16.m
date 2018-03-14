@@ -494,16 +494,16 @@ fignum = fignum+1;
 % components used in the Actual design for circuit 2.
 %
 
-Vdd_meas_pos_2  = ?     ; % Positive power supply voltage
-Vdd_meas_neg_2  = ?     ; % Negative power supply voltage
+Vdd_meas_pos_2  =  15.613 ; % Positive power supply voltage
+Vdd_meas_neg_2  = -15.069 ; % Negative power supply voltage
 
-R1_ideal_meas_2 = ?     ; % Ohms
-R2_ideal_meas_2 = ?     ; % Ohms
-R3_ideal_meas_2 = ?     ; % Ohms
-R4_ideal_meas_2 = ?     ; % Ohms
-R5_ideal_meas_2 = ?     ; % Ohms
-C1_ideal_meas_2 = ?     ; % Farads
-C2_ideal_meas_2 = ?     ; % Farads
+R1_ideal_meas_2 = 5030.5           ; % Ohms
+R2_ideal_meas_2 = 5022.1           ; % Ohms
+R3_ideal_meas_2 = 197.35 + 197.55  ; % Ohms - Used two resistors to make 394.9 Ohms
+R4_ideal_meas_2 = 998.7            ; % Ohms
+R5_ideal_meas_2 = 996.2            ; % Ohms
+C1_ideal_meas_2 = 0.1105e-6        ; % Farads
+C2_ideal_meas_2 = 0.1003e-6        ; % Farads
 
 display(' ');
 display('The measured component values for circuit 2 are:');
@@ -591,8 +591,8 @@ fignum = fignum+1;
 % -500mV and transitions to +500mV (ideally).
 %
 
-Vin_meas_pos_2  = ? ;       % Positive input signal voltage
-Vin_meas_neg_2  = ? ;       % Negative input signal voltage
+Vin_meas_pos_2  =  492.85 ;       % Positive input signal voltage (from O-Scope)
+Vin_meas_neg_2  = -493.02 ;       % Negative input signal voltage
 
 Vin_step_meas_2 = Vin_meas_pos_2 - Vin_meas_neg_2;
 
@@ -625,8 +625,8 @@ fignum = fignum+1;
 % operating properly. 
 %
 
-Vout_meas_pos_2  = ?    ;   % Stabilized positive output signal voltage
-Vout_meas_neg_2  = ?    ;   % Stabilized negative output signal voltage
+Vout_meas_pos_2  =  484.50e-3  ;   % Stabilized positive output signal voltage
+Vout_meas_neg_2  = -489.38e-3  ;   % Stabilized negative output signal voltage
 
 Vout_step_meas_2 = Vout_meas_pos_2 - Vout_meas_neg_2;
 
@@ -664,10 +664,10 @@ fignum = fignum+1;
 %
 
 % Capture peak overshoot voltage from the oscilloscope C2 display.
-meas_vout_pk_overshoot_2  =   ?     ;
+meas_vout_pk_overshoot_2  =   1.19     ;
 
 % Capture peak overshoot time stamp from the oscilloscope dT display.
-meas_t2_pk_overshoot_ideal_2  = ?      ;
+meas_t2_pk_overshoot_ideal_2  = 198e-6      ;
 
 % Calculate the actual peak overshoot voltage.
 meas_v5_pk_overshoot_ideal_2 = ...
@@ -711,10 +711,10 @@ fignum = fignum+1;
 %
 
 % Capture peak undershoot voltage from the oscilloscope C2 display.
-meas_vout_pk_undershoot_2 = ?;
+meas_vout_pk_undershoot_2 = -15.8e-3 ;
 
 % Capture peak undershoot time stamp from the oscilloscope dT display.
-meas_t2_pk_undershoot_ideal_2 = ?;
+meas_t2_pk_undershoot_ideal_2 = 646e-6;
 
 % Calculate the actual peak undershoot voltage.
 meas_v5_pk_undershoot_ideal_2 = ...
@@ -783,16 +783,16 @@ fprintf('        %% diff = %+8.4f (%%).\n', ...
 % components used in the Actual design for circuit 6.
 %
 
-Vdd_meas_pos_6  = ? ;        % Positive power supply voltage
-Vdd_meas_neg_6  = ? ;        % Negative power supply voltage
+Vdd_meas_pos_6  =  15.613;        % Positive power supply voltage
+Vdd_meas_neg_6  =  15.069;        % Negative power supply voltage
 
-R1_ideal_meas_6 =  ?    ;  % Ohms
-R2_ideal_meas_6 = ?     ;  % Ohms
-R3_ideal_meas_6 = ?     ;  % Ohms
-R4_ideal_meas_6 = ?     ;  % Ohms
-R5_ideal_meas_6 = ?     ; % Ohms
-C1_ideal_meas_6 = ?     ; % Farads
-C2_ideal_meas_6 = ?     ; % Farads
+R1_ideal_meas_6 = 1283.2    ;  % Ohms
+R2_ideal_meas_6 = 1292.7     ;  % Ohms
+R3_ideal_meas_6 = 991.6     ;  % Ohms
+R4_ideal_meas_6 = 998.7     ;  % Ohms
+R5_ideal_meas_6 = 996.2     ; % Ohms
+C1_ideal_meas_6 = 0.1105e-6     ; % Farads
+C2_ideal_meas_6 = 0.1003e-6     ; % Farads
 
 display(' ');
 display('The measured component values for circuit 6 are:');
@@ -862,8 +862,8 @@ fignum = fignum+1;
 % ........................................................................
 %
 
-Vin_meas_pos_6  = ?     ;       % Positive input signal voltage
-Vin_meas_neg_6  = ?     ;       % Negative input signal voltage
+Vin_meas_pos_6  =  481.91e-3     ;       % Positive input signal voltage
+Vin_meas_neg_6  = -484.97e-3     ;       % Negative input signal voltage
 
 Vin_step_meas_6 = Vin_meas_pos_6 - Vin_meas_neg_6;
 
@@ -896,8 +896,8 @@ fignum = fignum+1;
 % operating properly. 
 %
 
-Vout_meas_pos_6  = ?    ;   % Stabilized positive output signal voltage
-Vout_meas_neg_6  = ?    ;   % Stabilized negative output signal voltage
+Vout_meas_pos_6  =  488.25e-3    ;   % Stabilized positive output signal voltage
+Vout_meas_neg_6  = -485.65e-3    ;   % Stabilized negative output signal voltage
 
 Vout_step_meas_6 = Vout_meas_pos_6 - Vout_meas_neg_6;
 
@@ -925,10 +925,10 @@ fignum = fignum+1;
 % ........................................................................
 % 
 % Capture peak overshoot voltage from the oscilloscope C2 display.
-meas_vout_pk_overshoot_6  = ?       ;
+meas_vout_pk_overshoot_6  = 592.93e-3       ;
 
 % Capture peak overshoot time stamp from the oscilloscope dT display.
-meas_t6_pk_overshoot_ideal_6  = ?       ;
+meas_t6_pk_overshoot_ideal_6  = 300e-6       ;
 
 % Calculate the actual peak overshoot voltage.
 meas_v5_pk_overshoot_ideal_6 = ...
@@ -960,10 +960,10 @@ fignum = fignum+1;
 % from the oscilloscope's cursor displays for circuit 6.
 %
 % Capture peak undershoot voltage from the oscilloscope C2 display.
-meas_vout_pk_undershoot_6 = 0.49126;
+meas_vout_pk_undershoot_6 = 474.34e-3;
 
 % Capture peak undershoot time stamp from the oscilloscope dT display.
-meas_t6_pk_undershoot_ideal_6 = 622e-6;
+meas_t6_pk_undershoot_ideal_6 = 638e-6;
 
 % Calculate the actual peak undershoot voltage.
 meas_v5_pk_undershoot_ideal_6 = ...
