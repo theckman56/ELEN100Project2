@@ -27,7 +27,7 @@ format long; format compact;
 %
 
 % These Ideal Design element values are fixed in the circuit.
-VG  =  ? ;                     % Generator voltage
+VG  =  1 ;                     % Generator voltage
 
 Vdd_pos  =  15     ;            % Positive power supply voltage
 Vdd_neg  = -15     ;            % Negative power supply voltage
@@ -40,8 +40,8 @@ R5_ideal_2 = 1000          ;     % Ohms
 C1_ideal_2 = 0.1*10^-6           ;    % Farads
 C2_ideal_2 = 0.1*10^-6           ;    % Farads
 
-R1_ideal_6 = ?          ;     % Ohms
-R2_ideal_6 = ?          ;     % Ohms
+R1_ideal_6 = 1373          ;     % Ohms
+R2_ideal_6 = 1373          ;     % Ohms
 R3_ideal_6 = 960          ;     % Ohms
 R4_ideal_6 = 1000          ;     % Ohms
 R5_ideal_6 = 1000          ;     % Ohms
