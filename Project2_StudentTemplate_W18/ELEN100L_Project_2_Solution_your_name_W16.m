@@ -591,8 +591,8 @@ fignum = fignum+1;
 % -500mV and transitions to +500mV (ideally).
 %
 
-Vin_meas_pos_2  =  492.85 ;       % Positive input signal voltage (from O-Scope)
-Vin_meas_neg_2  = -493.02 ;       % Negative input signal voltage
+Vin_meas_pos_2  =  492.85e-3 ;       % Positive input signal voltage (from O-Scope)
+Vin_meas_neg_2  = -493.02e-3 ;       % Negative input signal voltage
 
 Vin_step_meas_2 = Vin_meas_pos_2 - Vin_meas_neg_2;
 
