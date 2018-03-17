@@ -3,20 +3,20 @@ Circuit: * C:\Users\names\Documents\GitHub\ELEN100Project2\LTSpice Schematic OpA
 Limiting fall time of source v1 to 0.3
 Direct Newton iteration for .op point succeeded.
 
-Date: Wed Mar 14 14:00:53 2018
-Total elapsed time: 0.209 seconds.
+Date: Sat Mar 17 09:36:43 2018
+Total elapsed time: 0.337 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2342
-traniter = 2338
-tranpoints = 1170
-accept = 1137
-rejected = 33
+totiter = 205328
+traniter = 205324
+tranpoints = 102663
+accept = 102661
+rejected = 2
 matrix size = 11
 fillins = 3
 solver = Normal
-Matrix Compiler1: 572 bytes object code size  0.3/0.2/[0.1]
-Matrix Compiler2: off  [0.1]/0.2/0.2
+Matrix Compiler1: 572 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: 1003 bytes object code size  0.1/0.1/[0.1]
 
