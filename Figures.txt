@@ -1,0 +1,60 @@
+Figure 1
+	circuit
+Figure 2
+	Problem 2
+Figure 3
+	Problem 3
+Figure 4
+	Ltspice schematic for circuit (2)
+Figure 5
+	Ltspice Voltage source setup (2)
+Figure 6
+	Ltspice model transient analysis simulation setup
+Figure 7
+	Ltspice model for simulation results
+Figure 8
+	Problem 6
+Figure 9
+	Transient Response Ideal design (code)
+Figure 10
+	Ltspice schematic for circuit (6)
+Figure 11
+	Ltspice voltage source setup (6)
+Figure 12
+	Ltspice model transient analysis simulation setup (6)
+Figure 13	
+	Ltspice model for simulation results (6)
+Figure 14
+	Problem 7
+Figure 15
+	circuit 2 oscilloscope
+Figure 16
+	Oscilloscope input voltage setup for circuit 2
+Figure 17
+	Oscilloscope input and output voltage setup for circuit 2
+Figure 18
+	Oscilloscope setup for circuit 2 peak overshoot output voltage
+Figure 19
+	Oscilloscope setup for circuit 2 peak undershoot output voltage
+Figure 20
+	Function generator setup for circuit 6
+Figure 21
+	Oscilloscope input voltage setup for circuit 6
+Figure 22
+	Oscilloscope input and output voltage setup for circuit 6
+Figure 23
+	Oscilloscope setup for circuit 2 peak overshoot output voltage
+Figure 24
+	Oscilloscope setup for circuit 2 peak undershoot output voltage
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
