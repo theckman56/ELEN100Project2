@@ -43,9 +43,9 @@ Figure 21
 Figure 22
 	Oscilloscope input and output voltage setup for circuit 6
 Figure 23
-	Oscilloscope setup for circuit 2 peak overshoot output voltage
+	Oscilloscope setup for circuit 6 peak overshoot output voltage
 Figure 24
-	Oscilloscope setup for circuit 2 peak undershoot output voltage
+	Oscilloscope setup for circuit 6 peak undershoot output voltage
 	
 	
 	
